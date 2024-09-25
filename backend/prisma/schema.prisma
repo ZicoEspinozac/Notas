@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categorias {
+  id               Int       @id @default(autoincrement())
+  nombre_categoria String    @db.VarChar(255)
+  fecha_creacion   DateTime? @default(now()) @db.DateTime(0)
+}
+
+model nota_categoria {
+  id           Int      @id @default(autoincrement())
+  nota_id      Int?
+  categoria_id Int?
+  estado       Boolean? @default(false)
+
+  @@unique([nota_id, categoria_id], map: "nota_id")
+  @@index([categoria_id], map: "categoria_id")
+}
+
+model notas {
+  id                 Int       @id @default(autoincrement())
+  nombre_nota        String    @db.VarChar(255)
+  descripcion_nota   String    @db.VarChar(150)
+  fecha_creacion     DateTime? @default(now()) @db.DateTime(0)
+  fecha_modificacion DateTime? @db.DateTime(0)
+  archivada          Boolean?  @default(false)
+}

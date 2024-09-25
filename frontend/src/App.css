@@ -1,0 +1,261 @@
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --background-color: #1e1e1e; /* Fondo de la pantalla del medio */
+  --sidebar-background-color: #2d2d2d; /* Fondo de la columna izquierda */
+  --text-color: #ffffff; /* Texto blanco */
+  --border-color: #444; /* Borde de la columna izquierda */
+  --note-card-shadow: rgba(0, 0, 0, 0.1);
+  --note-card-orange: #ffeedb;
+  --note-card-green: #d4edda;
+  --note-card-purple: #e2d8f9;
+  --note-card-blue: #d0e7ff;
+  --note-card-red: #ffd0d0;
+  --note-card-yellow: #fffacc;
+  --note-card-pink: #ffe0e0;
+  --hover-color: #0056b3; /* Nuevo color para hover */
+  --active-border-color: #000000; /* Color del borde activo */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color); /* Aplicar el color de texto blanco */
+  background-color: var(--background-color); /* Aplicar el fondo gris */
+  line-height: 1.6; /* Mejora la legibilidad */
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  padding: 20px;
+  border-right: 1px solid var(--border-color); /* Borde de la columna izquierda */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  position: relative; /* Necesario para posicionar el formulario de creación de notas */
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.categories-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  border: 2px solid transparent; /* Borde transparente por defecto */
+  padding: 8px 12px;
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  color: var(--text-color); /* Texto blanco */
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.category-btn.active {
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  color: var(--text-color); /* Texto blanco */
+  border: 2px solid var(--active-border-color); /* Borde negro para indicar que está activo */
+}
+
+.category-btn:hover {
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  color: var(--text-color); /* Texto blanco */
+  border: 2px solid var(--active-border-color); /* Borde negro para hover */
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: start; /* Alinea las tarjetas al inicio */
+}
+
+.note-card {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  color: var(--text-color); /* Texto blanco */
+  box-shadow: 0 4px 8px var(--note-card-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px var(--note-card-shadow);
+}
+
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-card-footer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.note-card .btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color); /* Color de los iconos igual al texto blanco */
+}
+
+.note-card .btn-icon:hover {
+  color: var(--primary-color); /* Color de los iconos en hover (opcional) */
+}
+
+.note-card.orange {
+  background-color: var(--note-card-orange);
+}
+
+.note-card.green {
+  background-color: var(--note-card-green);
+}
+
+.note-card.purple {
+  background-color: var(--note-card-purple);
+}
+
+.note-card.blue {
+  background-color: var(--note-card-blue);
+}
+
+.note-card.red {
+  background-color: var(--note-card-red);
+}
+
+.note-card.yellow {
+  background-color: var(--note-card-yellow);
+}
+
+.note-card.pink {
+  background-color: var(--note-card-pink);
+}
+
+/* Estilos para la sección de creación de notas */
+.create-note-section {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  box-shadow: 0 4px 8px var(--note-card-shadow);
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.create-note-section h3 {
+  margin-bottom: 15px;
+  color: #6c757d;;
+}
+
+.create-note-section input,
+.create-note-section textarea,
+.create-note-section select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-color); /* Fondo de los campos de entrada */
+  color: var(--text-color); /* Texto blanco */
+  font-size: 1em;
+}
+
+.create-note-section input:focus,
+.create-note-section textarea:focus,
+.create-note-section select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.create-note-section button {
+  background-color: #6c757d;
+  color: var(--text-color); /* Texto blanco */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.create-note-section button:hover {
+  background-color: #6c757d;
+}
+
+/* Estilos para la sección de creación de categorías */
+.create-category-section {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--sidebar-background-color); /* Fondo de la columna izquierda */
+  box-shadow: 0 4px 8px var(--note-card-shadow);
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.create-category-section h3 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.create-category-section input,
+.create-category-section textarea,
+.create-category-section select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-color); /* Fondo de los campos de entrada */
+  color: var(--text-color); /* Texto blanco */
+  font-size: 1em;
+}
+
+.create-category-section input:focus,
+.create-category-section textarea:focus,
+.create-category-section select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+.create-category-section button {
+  background-color: var(--primary-color);
+  color: var(--text-color); /* Texto blanco */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.create-category-section button:hover {
+  background-color: #6c757d;
+}
+
+/* Estilos específicos para notas archivadas */
+.notes-archived {
+  font-size: 0.8em;
+  color: var(--secondary-color);
+  margin-top: 240px; /* Ajusta este valor según sea necesario */
+}
